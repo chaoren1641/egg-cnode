@@ -67,7 +67,7 @@ module.exports = appInfo => {
   // 文件上传配置
   // 注：如果填写 qn_access，则会上传到 7牛，以下配置无效
   config.upload = {
-    path: path.join(__dirname, 'public/upload/'),
+    path: path.join(__dirname, '../app/public/upload/'),
     url: '/public/upload/',
   };
 
@@ -157,6 +157,17 @@ module.exports = appInfo => {
 
   // 每个 IP 每天可创建用户数
   config.create_user_per_ip = 1000;
+
+  config.search = 'google'; // 'google', 'baidu', 'local'
+
+  config.security = {
+    csrf: {
+      ignore: '/api/*/*',
+    },
+  };
+
+  config.default_page = 1;
+  config.default_limit = 20;
 
   return config;
 };
